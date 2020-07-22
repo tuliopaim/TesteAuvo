@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using TesteAuvo.Models;
 
@@ -7,6 +8,13 @@ namespace TesteAuvo.Services
 {
     public class MockClienteRepository : IClienteRepository
     {
+        public Cliente ObtenhaCliente(int id)
+        {
+            var clientes = ObtenhaTodosOsClientes();
+
+            return clientes.FirstOrDefault(c => c.Id == id);
+        }
+
         public List<Cliente> ObtenhaTodosOsClientes()
         {
             return new List<Cliente>

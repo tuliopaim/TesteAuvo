@@ -1,4 +1,4 @@
-﻿@page 
+﻿@page
 @model TesteAuvo.Pages.Clientes.IndexModel
 @{
     ViewData["Title"] = "Index";
@@ -8,16 +8,18 @@
     <div class="row card p-5">
         <h1 class="mb-4 display-2">Lista de Clientes</h1>
 
-        <div class="container">
+        <div class="card-deck">
             @foreach (var cliente in Model.Clientes)
             {
-                <div class="card p-3 m-3 card-clientes" style="width: 16rem;">
-                    <img class="card-img-top" src="~/assets/default-profile.svg" alt="@cliente.Nome" asp-append-version="true">
+                var photo = "~/assets/" + (cliente.Imagem ?? "default-profile.svg");
+
+                <div class="card p-3 m-3 card-clientes" style="max-width: 30%">
+                    <img class="card-img-top" src="@photo" alt="@cliente.Nome" asp-append-version="true">
                     <div class="card-body">
                         <h5 class="card-title">@cliente.Nome</h5>
                         <p class="card-text">@cliente.Email</p>
                         <div class="row">
-                            <button class="btn btn-outline-primary ml-auto" href="/Clientes/Detalhes" asp-route-ID="@cliente.Id">Abrir</button>
+                            <a class="btn btn-outline-primary ml-auto" asp-page="/Clientes/Detalhes" asp-route-ID="@cliente.Id">Abrir</a>
                         </div>
                     </div>
                 </div>

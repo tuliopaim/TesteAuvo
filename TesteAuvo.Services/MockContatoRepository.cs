@@ -7,7 +7,7 @@ namespace TesteAuvo.Services
 {
     public class MockContatoRepository : IContatoRepository
     {
-        public List<Contato> ObterTodosOsContatos()
+        public List<Contato> ObterTodosOsContatosDoCliente(int idCliente)
         {
             return new List<Contato>
             {

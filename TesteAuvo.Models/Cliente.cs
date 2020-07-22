@@ -14,7 +14,8 @@ namespace TesteAuvo.Models
         public string Segmento { get; set; }
         public string CpfCnpj { get; set; }
         public string CodigoExterno { get; set; }
-
         public string Imagem { get; set; }
+
+        public List<Contato> Contatos{ get; set; }
     }
 }

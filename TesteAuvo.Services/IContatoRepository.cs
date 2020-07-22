@@ -5,6 +5,6 @@ namespace TesteAuvo.Services
 {
     public interface IContatoRepository
     {
-        List<Contato> ObterTodosOsContatos();
+        List<Contato> ObterTodosOsContatosDoCliente(int idCliente);
     }
 }

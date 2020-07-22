@@ -9,6 +9,7 @@ namespace TesteAuvo.Services
     {
         List<Cliente> ObtenhaTodosOsClientes();
 
+        Cliente ObtenhaCliente(int id);
 
     }
 }
