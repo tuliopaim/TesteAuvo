@@ -1,0 +1,14 @@
+﻿body {
+}
+
+#imagem-perfil {
+    align-content: center;
+    justify-content: center;
+    width: 200px;
+    height: 100px;
+    background-color: springgreen;
+}
+
+.card-clientes{
+    opacity: 0.8;
+}
