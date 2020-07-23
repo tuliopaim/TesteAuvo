@@ -8,10 +8,14 @@ namespace TesteAuvo.Services
 {
     public class MockClienteRepository : IClienteRepository
     {
+        private readonly List<Cliente> clientes;
+        public MockClienteRepository()
+        {
+            clientes = ObtenhaTodosOsClientes();
+        }
+
         public Cliente ObtenhaCliente(int id)
         {
-            var clientes = ObtenhaTodosOsClientes();
-
             return clientes.FirstOrDefault(c => c.Id == id);
         }
 

@@ -80,6 +80,11 @@
                                 <p>@contato.Cargo</p>
                                 <p>@contato.Telefone</p>
                                 <p>@contato.Email</p>
+                                <div class="row">
+                                    <a asp-page="/Clientes/EditarContato" asp-route-ID="@contato.Id" class="btn btn-outline-primay ml-auto mr-2">
+                                        Editar
+                                    </a>
+                                </div>
                              </div>
                          </div>
                      </div>

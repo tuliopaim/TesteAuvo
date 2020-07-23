@@ -9,12 +9,13 @@ namespace TesteAuvo.Services
     public class MockContatoRepository : IContatoRepository
     {
         private List<Contato> contatos;
+
         public MockContatoRepository()
         {
-            contatos = ObterTodosOsContatos();
+            contatos = ObtenhaTodosOsContatos();
         }
 
-        public List<Contato> ObterTodosOsContatos()
+        public List<Contato> ObtenhaTodosOsContatos()
         {
             return new List<Contato>
             {
@@ -58,6 +59,21 @@ namespace TesteAuvo.Services
             return contatos.Where(c => c.Nome.Contains(nomeContato)).ToList();            
         }
 
+        public Contato ObtenhaContato(int id)
+        {
+            return contatos.FirstOrDefault(c => c.Id == id);
+        }
 
+        public Contato AtualizarContato(Contato contatoAtualizado)
+        {
+            var contato = contatos.FirstOrDefault(c => c.Id == contatoAtualizado.Id);
+
+            contato.Nome = contatoAtualizado.Nome;
+            contato.Cargo = contatoAtualizado.Cargo;
+            contato.Telefone = contatoAtualizado.Telefone;
+            contato.Email = contatoAtualizado.Email;
+
+            return contato;
+        }
     }
 }

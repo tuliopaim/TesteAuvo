@@ -5,7 +5,9 @@ namespace TesteAuvo.Services
 {
     public interface IContatoRepository
     {
-        List<Contato> ObterTodosOsContatos();
+        List<Contato> ObtenhaTodosOsContatos();
+        Contato ObtenhaContato(int id);
         List<Contato> FiltrarContatos(int idCliente, string nomeContato);
+        Contato AtualizarContato(Contato contatoAtualizado);
     }
 }

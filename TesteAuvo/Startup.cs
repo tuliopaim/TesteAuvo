@@ -25,8 +25,8 @@ namespace TesteAuvo
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddRazorPages();
-            services.AddTransient<IContatoRepository, MockContatoRepository>();
-            services.AddTransient<IClienteRepository, MockClienteRepository>();
+            services.AddSingleton<IContatoRepository, MockContatoRepository>();
+            services.AddSingleton<IClienteRepository, MockClienteRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
