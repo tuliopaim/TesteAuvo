@@ -16,6 +16,9 @@ namespace TesteAuvo.Pages.Clientes
 
         public Cliente Cliente { get; set; }
 
+        [BindProperty(SupportsGet = true)]
+        public string BuscaStr { get; set; }
+
         public DetalhesModel(IClienteRepository clienteRepository,
             IContatoRepository contatoRepository)
         {
@@ -23,7 +26,7 @@ namespace TesteAuvo.Pages.Clientes
             this.contatoRepository = contatoRepository;
         }
 
-        public IActionResult OnGet(int id)
+        public IActionResult OnGet(int id, string buscaStr)
         {
             Cliente = clienteRepository.ObtenhaCliente(id);
             if(Cliente == null)
@@ -31,9 +34,12 @@ namespace TesteAuvo.Pages.Clientes
                 return NotFound();
             }
 
-            Cliente.Contatos = contatoRepository.ObterTodosOsContatosDoCliente(id);
+            Cliente.Contatos = contatoRepository.FiltrarContatos(id, buscaStr);
 
             return Page();
         }
+
+
+
     }
 }
