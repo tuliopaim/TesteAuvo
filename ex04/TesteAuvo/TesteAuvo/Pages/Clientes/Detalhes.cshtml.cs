@@ -31,7 +31,7 @@ namespace TesteAuvo.Pages.Clientes
             Cliente = clienteRepository.ObtenhaCliente(id);
             if(Cliente == null)
             {
-                return NotFound();
+                return RedirectToPage("/NotFound");
             }
 
             Cliente.Contatos = contatoRepository.FiltrarContatos(id);

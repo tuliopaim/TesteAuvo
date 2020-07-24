@@ -26,7 +26,7 @@ namespace TesteAuvo.Pages.Clientes
 
             if(Contato == null)
             {
-                return NotFound();
+                return RedirectToPage("/NotFound");
             }
 
             return Page();
