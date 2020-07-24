@@ -19,12 +19,16 @@
     color: dimgrey;
 }
 
-.accordion .card-header{
-    display:flex;
-    align-items:center;
+.accordion .card-header {
+    display: flex;
+    align-items: center;
     justify-content: space-between;
-    background-color: ghostwhite;
+    background-color: whitesmoke;
     font-size: 1rem;
+}
+
+.accordion .card-header .fas{
+    font-size: 0.9rem;
 }
 
 .accordion .card-body{
