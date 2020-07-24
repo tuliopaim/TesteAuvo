@@ -1,6 +1,38 @@
-﻿body {
+﻿
+.perfil .propriedades-perfil {
+    padding: 0;
 }
 
-.contato-box{
-
+.perfil .propriedades-perfil .propriedades-perfil-titulo {
+    padding: 0;    
+    margin: 0;
+    align-items:center;
 }
+
+.perfil .propriedades-perfil p {
+    font-size: 0.9rem;
+}
+
+.perfil .subtitulo{
+    font-size: 0.6rem;
+    margin: 0;
+    color: dimgrey;
+}
+
+.accordion .card-header{
+    display:flex;
+    align-items:center;
+    justify-content: space-between;
+    background-color: ghostwhite;
+    font-size: 1rem;
+}
+
+.accordion .card-body{
+    display: flex;
+    align-items: end;
+}
+
+.accordion .card-body p{
+    margin-bottom: 5px;
+}
+

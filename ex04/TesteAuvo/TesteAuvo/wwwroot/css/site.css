@@ -7,8 +7,9 @@ a.navbar-brand {
   word-break: break-all;
 }
 
-body{
+body {
     background-color: #f7faff;
+    font-family: 'Roboto', sans-serif;
 }
 
 .card-body p{

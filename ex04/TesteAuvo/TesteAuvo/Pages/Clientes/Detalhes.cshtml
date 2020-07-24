@@ -6,26 +6,39 @@
 
 <div class="container row">
     <!--Perfil-->
-    <div class="col-md-3 card p-4 m-1 my-md-0">
+    <div class="col-md-3 card p-4 m-1 my-md-0 perfil">
         @{
             var photo = "~/assets/" + (Model.Cliente.Imagem ?? "default-profile.svg");
         }
         <img class="card-img-top" src="@photo" alt="@Model.Cliente.Nome" asp-append-version="true">
 
-        <h3 class="mb-2">@Model.Cliente.Nome</h3>
-        <p class="mb-4">@Model.Cliente.Telefone</p>
-        <p class="mb-4">@Model.Cliente.Email</p>
-        <p class="mb-4">@Model.Cliente.Endereco</p>
+        <div class="container propriedades-perfil mt-3">
 
-        <h5>Mais Informações</h5>
+            <div class="container row propriedades-perfil-titulo mb-2">
+                <i class="fa fa-building h5 mr-2"></i>
+                <div class="h5">@Model.Cliente.Nome</div>
+            </div>
 
-        <p>Segmento</p>
-        <p>@Model.Cliente.Segmento</p>
-        <p>CPF/CNPJ</p>
-        <p>@Model.Cliente.CpfCnpj</p>
-        <p>Codigo do sistema</p>
-        <p>@Model.Cliente.Id</p>
+            <p class="subtitulo">Telefone</p>
+            <p>@Model.Cliente.Telefone</p>
+            <p class="subtitulo">Email</p>
+            <p>@Model.Cliente.Email</p>
+            <p class="subtitulo">Endereco</p>
+            <p>@Model.Cliente.Endereco</p>
 
+            <div class="container row propriedades-perfil-titulo mb-2">
+                <i class="fa fa-plus h6 mr-2"></i>
+                <div class="h6">Mais Informações</div>
+            </div>
+
+            <p class="subtitulo">Segmento</p>
+            <p>@Model.Cliente.Segmento</p>
+            <p class="subtitulo">CPF/CNPJ</p>
+            <p>@Model.Cliente.CpfCnpj</p>
+            <p class="subtitulo">Codigo do sistema</p>
+            <p>@Model.Cliente.Id</p>
+
+        </div>
     </div>
 
     <!--Tarefas-->
@@ -37,65 +50,56 @@
     </div>
 
     <!--Contatos-->
-    <div class="col-md-3 m-1 my-md-0">
-        <!--Editar Contatos-->
-        <div id="editar-contato" class="row card p-4" hidden>
-            <h3 class="mb-4">Editar Contato</h3>
+    <div class="col-md-3 card p-4 m-1 my-md-0">       
+        <h3 class="mb-4">Contatos</h3>
 
-        </div>
-        <div class="row card p-4">
-            <h3 class="mb-4">Contatos</h3>
-
-            <!--Filtrar contatos-->
-            <form class="mb-4" method="get">
-                <div class="input-group">
-                    <input class="form-control" asp-for="BuscaStr" />
-                    <div class="input-group-append">
-                        <button type="submit" class="btn btn-outline-primary">Buscar</button>
-                    </div>
+        <!--Filtrar contatos-->
+        <form class="mb-4" method="get">
+            <div class="input-group">
+                <input class="form-control" asp-for="BuscaStr" />
+                <div class="input-group-append">
+                    <button type="submit" class="btn btn-outline-primary">Buscar</button>
                 </div>
-            </form>
+            </div>
+        </form>
 
-            @if (Model.Cliente.Contatos.Count > 0)
-            {
-                <div class="accordion" id="contatos-accordion">
+        @if (Model.Cliente.Contatos.Count > 0)
+        {
+            <div class="accordion" id="contatos-accordion">
 
-                 @foreach (var contato in Model.Cliente.Contatos)
-                 {
-                     var collapseId="collapse-" + contato.Id;
-                     var collapseIdHref="#collapse-" + contato.Id;
-                     var textId="text-" + contato.Id;
-                     var formId="form-" + contato.Id;
+                @foreach (var contato in Model.Cliente.Contatos)
+                {
+                    var collapseId="collapse-" + contato.Id;
+                    var collapseIdHref="#collapse-" + contato.Id;
+                    var textId="text-" + contato.Id;
+                    var formId="form-" + contato.Id;
 
-                     <div class="card">
-                         <div class="card-header px-4 py-3 mb-0">
-                            <div class="row">
-                                <h5>@contato.Nome</h5>
-                                <a href="@collapseIdHref" data-toggle="collapse" class="ml-auto mr-2" > -- </a>
-                             </div>
-                         </div>
+                    <div class="card">
+                        <div class="card-header row m-0 py-0 px-3">
+                            <p class="py-2 m-0">@contato.Nome</p>
+                            <a href="@collapseIdHref" data-toggle="collapse" style="color: dimgrey">
+                                <i class="fa fa-plus"></i>
+                            </a>
+                        </div>
 
-                         <div id="@collapseId" class="collapse" data-parent="#contatos-accordion">
-                            <div class="card-body">
+                        <div id="@collapseId" class="collapse" data-parent="#contatos-accordion">
+                        <div class="card-body py-2 px-3">
+                            <div class="container p-0">
                                 <p>@contato.Cargo</p>
                                 <p>@contato.Telefone</p>
                                 <p>@contato.Email</p>
-                                <div class="row">
-                                    <a asp-page="/Clientes/EditarContato" asp-route-ID="@contato.Id" class="btn btn-outline-primay ml-auto mr-2">
-                                        Editar
-                                    </a>
-                                </div>
-                             </div>
-                         </div>
-                     </div>
+                            </div>
+                            <a asp-page="/Clientes/EditarContato" asp-route-ID="@contato.Id" class="btn btn-outline-primay ml-auto p-0">
+                                <i class="fa fa-pencil-alt"></i>
+                            </a>
+                            </div>
+                        </div>
+                    </div>
+                }                 
 
-                 }
-                 
+            </div>
+        }
 
-                </div>
-            }
-
-        </div>
     </div>
 
 </div>
