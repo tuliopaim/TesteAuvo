@@ -7,7 +7,7 @@ namespace TesteAuvo.Services
     {
         List<Contato> ObtenhaTodosOsContatos();
         Contato ObtenhaContato(int id);
-        List<Contato> FiltrarContatos(int idCliente, string nomeContato);
+        List<Contato> FiltrarContatos(int idCliente, string nomeContato = null);
         Contato AtualizarContato(Contato contatoAtualizado);
     }
 }

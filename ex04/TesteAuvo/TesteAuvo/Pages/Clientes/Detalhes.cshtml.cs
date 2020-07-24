@@ -26,7 +26,7 @@ namespace TesteAuvo.Pages.Clientes
             this.contatoRepository = contatoRepository;
         }
 
-        public IActionResult OnGet(int id, string buscaStr)
+        public IActionResult OnGet(int id)
         {
             Cliente = clienteRepository.ObtenhaCliente(id);
             if(Cliente == null)
@@ -34,7 +34,7 @@ namespace TesteAuvo.Pages.Clientes
                 return NotFound();
             }
 
-            Cliente.Contatos = contatoRepository.FiltrarContatos(id, buscaStr);
+            Cliente.Contatos = contatoRepository.FiltrarContatos(id);
 
             return Page();
         }

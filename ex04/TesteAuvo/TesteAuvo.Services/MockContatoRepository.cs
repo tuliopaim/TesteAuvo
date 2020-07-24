@@ -49,7 +49,7 @@ namespace TesteAuvo.Services
             };
         }
 
-        public List<Contato> FiltrarContatos(int idCliente, string nomeContato)
+        public List<Contato> FiltrarContatos(int idCliente, string nomeContato = null)
         {
             var contatosDoCliente = contatos.Where(c => c.IdCliente == idCliente).ToList();
 

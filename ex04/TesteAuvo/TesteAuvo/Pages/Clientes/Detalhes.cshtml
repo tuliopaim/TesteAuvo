@@ -54,18 +54,15 @@
         <h3 class="mb-4">Contatos</h3>
 
         <!--Filtrar contatos-->
-        <form class="mb-4" method="get">
+        <form class="mb-4">
             <div class="input-group">
-                <input class="form-control" asp-for="BuscaStr" />
-                <div class="input-group-append">
-                    <button type="submit" class="btn btn-outline-primary">Buscar</button>
-                </div>
+                <input id="label-buscar" class="form-control">
             </div>
         </form>
 
         @if (Model.Cliente.Contatos.Count > 0)
         {
-            <div class="accordion" id="contatos-accordion">
+            <div id="lista-contatos" class="accordion">
 
                 @foreach (var contato in Model.Cliente.Contatos)
                 {
@@ -74,7 +71,7 @@
                     var textId="text-" + contato.Id;
                     var formId="form-" + contato.Id;
 
-                    <div class="card">
+                    <div class="card" nome-contato="@contato.Nome">
                         <div class="card-header row m-0 py-0 px-3">
                             <p class="py-2 m-0">@contato.Nome</p>
                             <a href="@collapseIdHref" data-toggle="collapse" style="color: dimgrey">
@@ -82,7 +79,7 @@
                             </a>
                         </div>
 
-                        <div id="@collapseId" class="collapse" data-parent="#contatos-accordion">
+                        <div id="@collapseId" class="collapse" data-parent="#lista-contatos">
                         <div class="card-body py-2 px-3">
                             <div class="container p-0">
                                 <p>@contato.Cargo</p>
